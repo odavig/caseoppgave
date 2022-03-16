@@ -1,8 +1,8 @@
 <template>
   <div>
-    <app-cards-container heading="Dette er en overskrift"></app-cards-container>
-    <app-cards-container heading="Og dette er den andre"></app-cards-container>
-    <div class="rutenett infoContainer">
+    <app-cards-container heading="Dette er en overskrift" bannerClass="slide"></app-cards-container>
+    <app-cards-container heading="Og dette er den andre" bannerClass="slide"></app-cards-container>
+    <div class="rutenett infoContainer" v-if="infoContainerVisible == 'true'">
       <div class="kol-6 imgContainer">
         <img src="../assets/media/img.png" alt="" />
       </div>
@@ -19,14 +19,15 @@
         </h5>
       </div>
     </div>
-    <app-cards-container heading="Dette er en overskrift"></app-cards-container>
-    <app-cards-container heading="Og dette er den andre"></app-cards-container>
+    <app-cards-container heading="Dette er en overskrift" bannerClass="slide"></app-cards-container>
+    <app-cards-container heading="Og dette er den andre" bannerClass="slide"></app-cards-container>
   </div>
 </template>
 
 <script>
 import CardsContainer from "./CardsContainer.vue";
 export default {
+  props: ['infoContainerVisible'],
   components: {
     appCardsContainer: CardsContainer
   }

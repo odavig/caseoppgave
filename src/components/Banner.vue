@@ -3,26 +3,42 @@
     <app-container paddingSize="paddingM" class="rutenett">
       <div id="bannerText">
         <div>
-          <h1>Buy The Best Products From All Over The World</h1>
-          <p>
+          <h1>{{ headingText }}</h1>
+          <p v-if="paragraphVisible == 'true'">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
             lorem ultrices enim ac. Vitae consequat parturient viverra ut.
           </p>
         </div>
-        <app-button btnTitle="Buy Now" btnClass="primary-white"></app-button>
+        <app-button
+          v-if="btnVisible == 'true'"
+          btnTitle="Buy Now"
+          btnClass="primary-white"
+        ></app-button>
       </div>
-      <div id="bannerImg">
-        <img src="../assets/media/banner-img.png" alt="Bilde av en TV" />
+      <div id="bannerImg" v-if="imgVisible == 'true'">
+        <img
+          v-if="imgVisible == 'true'"
+          src="../assets/media/banner-img.png"
+          alt="Bilde av en TV"
+        />
       </div>
-      <app-arrow-icon 
-        id="bannerIcon"
-        imgSrc="white">
+      <app-arrow-icon v-if="arrowVisible == 'true'" id="bannerIcon" imgSrc="white">
       </app-arrow-icon>
     </app-container>
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  props: [
+    "headingText",
+    "paragraphVisible",
+    "btnVisible",
+    "imgVisible",
+    "arrowVisible"
+  ]
+};
+</script>
 
 <style scoped>
 #heroBanner {

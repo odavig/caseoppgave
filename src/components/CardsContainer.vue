@@ -1,51 +1,40 @@
 <template>
   <div>
     <app-container>
-      <h2> {{ heading }} </h2>
+      <h2>{{ heading }}</h2>
     </app-container>
-    <div id="cards__outer--container">
+    <div :class="bannerClass">
       <app-cards
         v-for="(product, i) in products"
         :key="i"
-        :name="product.name"
+        :name="product.title"
         :price="product.price"
+        :img="product.img.data.attributes.url"
+        :imgHeight="product.img.data.attributes.height"
       ></app-cards>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  props: ['heading'],
+  props: ["heading", 'bannerClass'],
   data() {
     return {
-      products: [
-        {
-          name: "tv",
-          price: 120
-        },
-        {
-          name: "mac",
-          price: 439
-        },
-        {
-          name: "mouse",
-          price: 12
-        },
-        {
-          name: "mouse",
-          price: 12
-        },
-        {
-          name: "mouse",
-          price: 12
-        },
-        {
-          name: "mouse",
-          price: 12
-        }
-      ]
+      products: []
     };
+  },
+  created() {
+    axios
+      .get("http://localhost:1337/api/products?populate=*")
+      .then(res => {
+        let json = res.data.data
+        for (let i = 0; i < json.length; i++) {
+          this.products.push(json[i].attributes)
+        }
+      })
+      .catch(error => console.log(error));
   }
 };
 </script>
@@ -54,7 +43,7 @@ export default {
 h2 {
   padding-top: 4%;
 }
-#cards__outer--container {
+.slide {
   padding-top: 4%;
   padding-bottom: 1.5%;
   white-space: nowrap;
@@ -62,5 +51,12 @@ h2 {
   height: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
+}
+
+.grid {
+  padding-top: 4%;
+  padding-bottom: 1.5%;
+  width: 100%;
+  height: 100%;
 }
 </style>

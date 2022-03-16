@@ -15,19 +15,25 @@
       </button>
     </div>
     <div class="card__img-container">
-      <img src="../../assets/media/banner-img.png" alt="" />
+      <img 
+      :src="imgUrl" 
+      alt="" 
+      :style="checkHeight"
+      />
     </div>
     <div class="card__text--container">
       <h3>
         {{ name }}
       </h3>
       <h3>
-        {{ price }}
+        <b>
+          ${{ price }}
+        </b>
       </h3>
     </div>
     <div class="card__button--container">
       <button>
-        Evt knapp
+        See Details
       </button>
     </div>
   </div>
@@ -35,7 +41,21 @@
 
 <script>
 export default {
-  props: ["name", "price"]
+  props: ["name", "price", 'img', 'imgHeight'],
+  data() {
+    return {
+      imgUrl: 'http://localhost:1337' + this.img
+    }
+  },
+  computed: {
+    checkHeight() {
+      if (this.imgHeight > 600 && this.imgHeight < 1500) {
+        return 'width: 70%'
+      } else if (this.imgHeight > 1500) {
+        return 'width: 60%'
+      }
+    }
+  }
 };
 </script>
 
@@ -49,6 +69,8 @@ export default {
   display: inline-block;
   margin-left: 3%;
   border-radius: 5px;
+  animation: downscale-card 0.3s ease-in-out forwards;
+  margin-bottom: 5%;
 }
 
 .card__icon--container {
@@ -59,22 +81,28 @@ export default {
 
 .card__icon--container button {
   border: none;
+  background-color: transparent;
 }
 
 .card__icon--container img {
   cursor: pointer;
   opacity: 0.6;
   width: 30%;
+  transition: 0.3s;
 }
 
 .card__img-container {
   height: 180px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   margin-top: 4%;
   text-align: center;
 }
 
 .card__img-container img {
-  width: 80%;
+  width: 55%;
 }
 
 .card__text--container {
@@ -82,6 +110,10 @@ export default {
   text-align: center;
   height: 100%;
   padding-bottom: 9%;
+}
+
+.card__text--container h3 {
+  font-weight: 400;
 }
 
 .card__button--container {
@@ -113,9 +145,22 @@ export default {
   opacity: 1;
 }
 
+.card:hover .card__icon--container img {
+  opacity: 1;
+}
+
 @keyframes scale-card {
     to {
         transform: scale(1.05);
     }
+}
+
+@keyframes downscale-card {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 </style>

@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import { routes } from './routes'
 import App from './App.vue'
 
+import store from './store'
+
 import Button from './components/design/Button.vue'
 import Container from './components/design/Container.vue'
 import ArrowIcon from './components/design/ArrowIcon.vue'
@@ -25,5 +27,6 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

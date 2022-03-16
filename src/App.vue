@@ -12,7 +12,10 @@ export default {
   name: "app",
   components: {
     appHeader: Header
-  }
+  },
+  created() {
+    this.$store.dispatch('setProducts')
+  },
 };
 </script>
 
