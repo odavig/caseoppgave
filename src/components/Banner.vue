@@ -12,7 +12,7 @@
         <app-button btnTitle="Buy Now" btnClass="primary-white"></app-button>
       </div>
       <div id="bannerImg">
-        <img src="../../assets/media/banner-img.png" alt="Bilde av en TV" />
+        <img src="../assets/media/banner-img.png" alt="Bilde av en TV" />
       </div>
       <app-arrow-icon 
         id="bannerIcon"

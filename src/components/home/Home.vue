@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Banner from './Banner.vue'
-import Main from './Main.vue'
+import Banner from '../Banner.vue'
+import Main from '../Main.vue'
 
 export default {
     components: {

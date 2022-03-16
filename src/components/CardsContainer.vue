@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-container>
-      <h2>Newest Products</h2>
+      <h2> {{ heading }} </h2>
     </app-container>
     <div id="cards__outer--container">
       <app-cards
@@ -11,12 +11,12 @@
         :price="product.price"
       ></app-cards>
     </div>
-    <app-container class="paddingM"></app-container>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['heading'],
   data() {
     return {
       products: [
@@ -61,5 +61,6 @@ h2 {
   width: 100%;
   height: 100%;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 </style>

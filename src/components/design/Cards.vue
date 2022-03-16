@@ -86,7 +86,7 @@ export default {
 
 .card__button--container {
   position: absolute;
-  bottom: 0;
+  bottom: -20px;
   left: 0px;
   width: 100%;
 }
@@ -100,11 +100,17 @@ export default {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   color: white;
-  display: none;
+  opacity: 0;
+  transition: 0.3s;
 }
 
 .card:hover {
     animation: scale-card 0.3s ease-in-out forwards;
+}
+
+.card:hover .card__button--container button {
+  display: block;
+  opacity: 1;
 }
 
 @keyframes scale-card {

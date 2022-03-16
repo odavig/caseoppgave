@@ -44,4 +44,9 @@ button {
   padding: 2% 4% 2% 4%;
   border-radius: 12px;
 }
+
+.small {
+  padding: 0.5% 1% 0.5% 1%;
+  font-size: 14px;
+}
 </style>
