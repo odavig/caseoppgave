@@ -1,5 +1,5 @@
 <template>
-  <app-container paddingSize="paddingSm">
+  <padding-container paddingSize="paddingSm">
     <header class="rutenett">
       <div id="logoContainer">
         <router-link to="/">
@@ -28,12 +28,13 @@
         ></app-button>
       </div>
     </header>
-  </app-container>
+  </padding-container>
 </template>
 
 <script>
 
 export default {
+  name: 'Header'
 };
 </script>
 

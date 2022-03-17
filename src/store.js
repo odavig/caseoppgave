@@ -22,6 +22,7 @@ export default new Vuex.Store({
                     for (let i = 0; i < json.length; i++) {
                         products.push(json[i].attributes)
                     }
+                    console.log(json);
                     commit('storeProducts', products)
                 })
         }

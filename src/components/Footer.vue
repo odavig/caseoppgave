@@ -46,6 +46,12 @@
   </footer>
 </template>
 
+<script>
+export default {
+  name: 'Footer'
+}
+</script>
+
 <style scoped>
 footer {
   padding-top: 5%;

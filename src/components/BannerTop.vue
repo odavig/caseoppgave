@@ -1,6 +1,6 @@
 <template>
   <div id="heroBanner">
-    <app-container paddingSize="paddingM" class="rutenett">
+    <padding-container paddingSize="paddingM" class="rutenett">
       <div id="bannerText">
         <div>
           <h1>{{ headingText }}</h1>
@@ -22,14 +22,15 @@
           alt="Bilde av en TV"
         />
       </div>
-      <app-arrow-icon v-if="arrowVisible == 'true'" id="bannerIcon" imgSrc="white">
-      </app-arrow-icon>
-    </app-container>
+      <arrow-icon v-if="arrowVisible == 'true'" id="bannerIcon" imgSrc="white">
+      </arrow-icon>
+    </padding-container>
   </div>
 </template>
 
 <script>
 export default {
+  name: 'BannerTop',
   props: [
     "headingText",
     "paragraphVisible",

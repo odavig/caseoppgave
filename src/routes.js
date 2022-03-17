@@ -1,10 +1,10 @@
-import Home from './components/home/Home'
-import Shop from './components/shop/Shop'
-import Signup from './components/defaultPages/Signup'
-import Login from './components/defaultPages/Login'
-import Contact from './components/defaultPages/Contact'
-import About from './components/defaultPages/About'
-import Cart from './components/shop/Cart'
+import Home from './pages/Home'
+import Shop from './pages/Shop'
+import Signup from './pages/Signup'
+import Login from './pages/Login'
+import Contact from './pages/Contact'
+import About from './pages/About'
+import Cart from './pages/Cart'
 
 export const routes = [
     {

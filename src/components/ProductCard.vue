@@ -1,15 +1,15 @@
 <template>
-  <div class="card">
+  <div class="card kol-3">
     <div class="card__icon--container">
       <button>
         <img
-          src="../../assets/media/heart-outline.png"
+          src="../assets/media/heart-outline.png"
           alt="Knapp for å legge til i favoritter"
         />
       </button>
       <button>
         <img
-          src="../../assets/media/cart-grey.png"
+          src="../assets/media/cart-grey.png"
           alt="Legg til i handlekurv"
         />
       </button>
@@ -41,6 +41,7 @@
 
 <script>
 export default {
+  name: 'ProductCard',
   props: ["name", "price", 'img', 'imgHeight'],
   data() {
     return {
@@ -65,12 +66,11 @@ export default {
   box-shadow: 0px 0px 20px 0.5px rgba(0, 0, 0, 0.3);
   position: relative;
   background-color: #f1f1f1;
-  width: 15%;
+  width: 60%;
   display: inline-block;
-  margin-left: 3%;
   border-radius: 5px;
   animation: downscale-card 0.3s ease-in-out forwards;
-  margin-bottom: 5%;
+  margin-bottom: 15%;
 }
 
 .card__icon--container {

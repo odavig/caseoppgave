@@ -3,15 +3,15 @@
 </template>
 
 <script>
-import ArrowBlack from '../../assets/media/arrow-black.png'
-import ArrowGreen from '../../assets/media/arrow-green.png'
-import ArrowWhite from '../../assets/media/arrow-white.png'
+import ArrowBlack from '../assets/media/arrow-black.png'
+import ArrowGreen from '../assets/media/arrow-green.png'
+import ArrowWhite from '../assets/media/arrow-white.png'
 
 export default {
+    name: "ArrowIcon",
     props: ['imgSrc'],
     computed: {
         changeArrow() {
-            console.log(this.imgSrc);
             if (this.imgSrc === 'black') {
                 return ArrowBlack
             } else if (this.imgSrc === 'green') {
