@@ -7,11 +7,14 @@
       imgVisible="true"
       arrowVisible="true"
     ></banner-top>
-    <home-product-container heading="Newest in Store" sortBy="publishedAt"></home-product-container>
+    <home-product-container
+      heading="Newest in Store"
+      :products="sortByPublished"
+    ></home-product-container>
     <banner-5050></banner-5050>
     <home-product-container
       heading="Overskrift"
-      sortBy="price"
+      :products="sortByPrice"
     ></home-product-container>
   </div>
 </template>
@@ -27,6 +30,14 @@ export default {
     Banner5050,
     BannerTop,
     HomeProductContainer
+  },
+  computed: {
+    sortByPrice() {
+      return this.$store.getters.sortProducts("price");
+    },
+    sortByPublished() {
+      return this.$store.getters.sortProducts("publishedAt");
+    }
   },
   mounted() {
     this.$store.dispatch("setProducts");

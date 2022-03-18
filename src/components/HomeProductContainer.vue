@@ -20,7 +20,7 @@
 <script>
 export default {
   name: "HomeProductContainer",
-  props: ["heading", "sortBy"],
+  props: ["heading", "products"],
   computed: {},
   data() {
     return {
