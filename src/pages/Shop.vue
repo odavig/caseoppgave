@@ -9,42 +9,67 @@
     ></banner-top>
     <div id="shopNav">
       <padding-container class="paddingSm">
-        <p>{{ getProducts }}</p>
-        <a href="" v-for="(category, i) in productCategory" :key="i">
+        <router-link to="/shop">
+          All Products
+        </router-link>
+        <router-link
+          :to="'/shop/' + category"
+          v-for="(category, i) in categories"
+          :key="i"
+        >
           {{ category.charAt(0).toUpperCase() + category.slice(1) }}
-        </a>
+        </router-link>
       </padding-container>
     </div>
-    <shop-product-container
+    <product-container-shop
       heading="All Products"
-    ></shop-product-container>
+      :products="products"
+    ></product-container-shop>
   </div>
 </template>
 <script>
-import ShopProductContainer from "../components/ShopProductContainer.vue";
-import BannerTop from "../components/BannerTop.vue";
+import ProductContainerShop from "../components/ProductContainerShop.vue";
 
 export default {
+  data() {
+    return {
+      chosenCategory: ""
+    };
+  },
   name: "Shop",
-  computed: {
-    getProducts() {
-      let products = this.$store.getters.products;
-      for (let i = 0; i < products.length; i++) {
-        if (!this.productCategory.includes(products[i].category)) {
-          this.productCategory.push(products[i].category);
-        }
+  watch: {
+    $route() {
+      if (!this.$route.params.category) {
+        this.chosenCategory = "";
+      } else {
+        this.chosenCategory = this.$route.params.category;
       }
     }
   },
-  data() {
-    return {
-      searchInput: "",
-      productCategory: []
-    };
+  computed: {
+    products() {
+      if (this.chosenCategory) {
+        return this.$store.getters.sortByCategory(this.chosenCategory);
+      } else {
+        return this.$store.getters.products;
+      }
+    },
+    categories() {
+      return this.$store.getters.getCategories;
+    }
   },
   components: {
-    ShopProductContainer,
-    BannerTop
+    ProductContainerShop
+  },
+  mounted() {
+    this.$store.dispatch("setProducts");
+  },
+  updated() {
+    if (!this.$route.params.category) {
+      this.chosenCategory = "";
+    } else {
+      this.chosenCategory = this.$route.params.category;
+    }
   }
 };
 </script>
@@ -75,5 +100,7 @@ export default {
   text-decoration: none;
   margin-left: 2%;
   margin-right: 2%;
+  border: none;
+  cursor: pointer;
 }
 </style>

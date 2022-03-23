@@ -108,8 +108,8 @@ footer {
   list-style-type: none;
   display: inline;
   cursor: pointer;
-  margin-right: 3%;
-  margin-left: 3%;
+  margin-right: 5%;
+  margin-left: 5%;
 }
 
 #informationContainerRights {

@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    products: [],
+    products: []
   },
   mutations: {
     storeProducts(state, products) {
@@ -20,19 +20,38 @@ export default new Vuex.Store({
         let json = res.data.data;
         for (let i = 0; i < json.length; i++) {
           products.push(json[i].attributes);
+          products[i].id = json[i].id
         }
         commit("storeProducts", products);
       });
-    }
+    },
   },
   getters: {
     products(state) {
       return state.products;
     },
-
-    sortProducts: (state) => (sortBy) => {
-        let sortedArray = [...state.products]
-        return sortedArray.sort((a, b) => a[sortBy] - b[sortBy])
+    sortProducts: state => (sortBy, limit) => {
+      let sortedArray = [...state.products];
+      sortedArray.sort((a, b) => b[sortBy] - a[sortBy]);
+      return sortedArray.slice(0, limit)
     },
+    getCategories(state) {
+      let categories = []
+      for (let i = 0; i < state.products.length; i++) {
+        if (!categories.includes(state.products[i].category)) {
+          categories.push(state.products[i].category);
+        }
+      }
+      return categories
+    },
+    sortByCategory: state => sortBy => {
+      let products = []
+      for (let i = 0; i < state.products.length; i++) {
+        if (state.products[i].category == sortBy) {
+          products.push(state.products[i])
+        }
+      }
+      return products
+    }
   }
 });

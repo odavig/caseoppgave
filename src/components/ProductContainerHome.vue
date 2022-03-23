@@ -9,8 +9,10 @@
         :key="i"
         :name="product.title"
         :price="product.price"
-        :img="product.img.data.attributes.url"
+        :img="'http://localhost:1337' + product.img.data.attributes.url"
         :imgHeight="product.img.data.attributes.height"
+        :id="product.id"
+        :category="product.category"
         class="paddingM"
       ></product-card>
     </padding-container>
@@ -19,19 +21,9 @@
 
 <script>
 export default {
-  name: "HomeProductContainer",
-  props: ["heading", "products"],
-  computed: {},
-  data() {
-    return {
-    };
-  }
+  name: "ProductContainerHome",
+  props: ["heading", "products"]
 };
 </script>
 
-<style scoped>
-div {
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
+<style scoped></style>

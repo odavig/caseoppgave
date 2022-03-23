@@ -8,52 +8,38 @@
         />
       </button>
       <button>
-        <img
-          src="../assets/media/cart-grey.png"
-          alt="Legg til i handlekurv"
-        />
+        <img src="../assets/media/cart-grey.png" alt="Legg til i handlekurv" />
       </button>
     </div>
     <div class="card__img-container">
-      <img 
-      :src="imgUrl" 
-      alt="" 
-      :style="checkHeight"
-      />
+      <img :src="img" alt="" :style="checkHeight" />
     </div>
     <div class="card__text--container">
       <h3>
         {{ name }}
       </h3>
       <h3>
-        <b>
-          ${{ price }}
-        </b>
+        <b> ${{ price }} </b>
       </h3>
     </div>
     <div class="card__button--container">
-      <button>
+      <router-link :to="'/shop/' + category + '/' + id" tag="button">
         See Details
-      </button>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ProductCard',
-  props: ["name", "price", 'img', 'imgHeight'],
-  data() {
-    return {
-      imgUrl: 'http://localhost:1337' + this.img
-    }
-  },
+  name: "ProductCard",
+  props: ["name", "price", "img", "imgHeight", 'id', 'category'],
   computed: {
     checkHeight() {
       if (this.imgHeight > 600 && this.imgHeight < 1500) {
-        return 'width: 70%'
+        return "width: 70%";
       } else if (this.imgHeight > 1500) {
-        return 'width: 60%'
+        return "width: 60%";
       }
     }
   }
@@ -71,6 +57,8 @@ export default {
   border-radius: 5px;
   animation: downscale-card 0.3s ease-in-out forwards;
   margin-bottom: 15%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card__icon--container {
@@ -137,7 +125,7 @@ export default {
 }
 
 .card:hover {
-    animation: scale-card 0.3s ease-in-out forwards;
+  animation: scale-card 0.3s ease-in-out forwards;
 }
 
 .card:hover .card__button--container button {
@@ -150,9 +138,9 @@ export default {
 }
 
 @keyframes scale-card {
-    to {
-        transform: scale(1.05);
-    }
+  to {
+    transform: scale(1.05);
+  }
 }
 
 @keyframes downscale-card {

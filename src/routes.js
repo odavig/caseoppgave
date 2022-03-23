@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import Cart from './pages/Cart'
+import ProductDetail from './pages/ProductDetail'
 
 export const routes = [
     {
@@ -13,7 +14,13 @@ export const routes = [
     },
     {
         path: '/shop',
-        component: Shop
+        component: Shop,
+        children: [
+            { 
+                path: ':category', 
+                component: Shop,
+            },
+        ]
     },
     {
         path: '/signup',
@@ -34,5 +41,9 @@ export const routes = [
     {
         path: '/cart',
         component: Cart
+    },
+    {
+        path: '/shop/:category/:id',
+        component: ProductDetail
     }
 ]
