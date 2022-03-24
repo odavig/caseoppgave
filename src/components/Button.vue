@@ -1,6 +1,6 @@
 <template>
   <button :class="btnClass">
-    {{ btnTitle }}
+    <slot></slot>
   </button>
 </template>
 
@@ -42,6 +42,14 @@ button {
   background-color: white;
   color: #008066;
   border: 3px solid #008066;
+  padding: 2% 4% 2% 4%;
+  border-radius: 12px;
+}
+
+.secondary-no-border {
+  background-color: white;
+  color: #008066;
+  border: 3px solid white;
   padding: 2% 4% 2% 4%;
   border-radius: 12px;
 }

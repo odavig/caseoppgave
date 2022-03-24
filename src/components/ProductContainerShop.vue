@@ -15,7 +15,6 @@
         :name="product.title"
         :price="product.price"
         :img="'http://localhost:1337' + product.img.data.attributes.url"
-        :imgHeight="product.img.data.attributes.height"
         class="paddingM"
         :id="product.id"
         :category="product.category"

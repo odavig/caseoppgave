@@ -11,9 +11,10 @@
         </div>
         <app-button
           v-if="btnVisible == 'true'"
-          btnTitle="Buy Now"
           btnClass="primary-white"
-        ></app-button>
+        >
+        Buy Now
+        </app-button>
       </div>
       <div id="bannerImg" v-if="imgVisible == 'true'">
         <img

@@ -8,11 +8,11 @@
         />
       </button>
       <button>
-        <img src="../assets/media/cart-grey.png" alt="Legg til i handlekurv" />
+        <img src="../assets/media/cart-grey.png" alt="Legg til i handlekurv" @click="addToCart" />
       </button>
     </div>
     <div class="card__img-container">
-      <img :src="img" alt="" :style="checkHeight" />
+      <img :src="img" :alt="'Bilde av ' + name" />
     </div>
     <div class="card__text--container">
       <h3>
@@ -33,14 +33,10 @@
 <script>
 export default {
   name: "ProductCard",
-  props: ["name", "price", "img", "imgHeight", 'id', 'category'],
-  computed: {
-    checkHeight() {
-      if (this.imgHeight > 600 && this.imgHeight < 1500) {
-        return "width: 70%";
-      } else if (this.imgHeight > 1500) {
-        return "width: 60%";
-      }
+  props: ["name", "price", "img", "id", "category"],
+  methods: {
+    addToCart() {
+      this.$store.dispatch("addToCart", this.id);
     }
   }
 };
@@ -91,12 +87,12 @@ export default {
 
 .card__img-container img {
   width: 55%;
+  margin-top: 7%;
 }
 
 .card__text--container {
   margin-top: 5%;
   text-align: center;
-  height: 100%;
   padding-bottom: 9%;
 }
 

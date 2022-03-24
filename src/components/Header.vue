@@ -15,17 +15,20 @@
         <router-link to="/about">About</router-link>
         <router-link to="/cart">
           <img id="cartImg" src="../assets/media/cart.png" alt="Brand logo" />
+          <p v-if="getCart.length > 0"> {{ getCart.length }} </p>
         </router-link>
       </nav>
       <div id="navAction">
         <app-button 
-            btnTitle="Sign Up"
             btnClass="primary"
-        ></app-button>
+        >
+        Sign Up
+        </app-button>
         <app-button 
-            btnTitle="Sign In"
             btnClass="secondary"
-        ></app-button>
+        >
+        Sign In
+        </app-button>
       </div>
     </header>
   </padding-container>
@@ -34,7 +37,15 @@
 <script>
 
 export default {
-  name: 'Header'
+  name: 'Header',
+  computed: {
+    getCart() {
+      return this.$store.getters.getCart
+    }
+  },
+  mounted() {
+    this.$store.dispatch('setCart')
+  }
 };
 </script>
 
@@ -66,5 +77,9 @@ img {
 
 #navAction button {
     margin-left: 5%;
+}
+
+p {
+  display: inline;
 }
 </style>

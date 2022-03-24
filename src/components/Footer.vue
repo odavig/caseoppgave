@@ -8,9 +8,10 @@
         id=""
       />
       <app-button
-        btnTitle="Sign Up"
         btnClass="primary-white small"
-      ></app-button>
+      >
+      Sign Up
+      </app-button>
     </div>
     <div id="outerInformationContainer">
       <div id="innerInformationContainer">

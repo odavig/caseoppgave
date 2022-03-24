@@ -6,11 +6,18 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    products: []
+    products: [],
+    cart: []
   },
   mutations: {
     storeProducts(state, products) {
       state.products = products;
+    },
+    saveCart(state, product) {
+      state.cart.push(product);
+    },
+    setCart(state, cart) {
+      state.cart = cart
     }
   },
   actions: {
@@ -20,11 +27,22 @@ export default new Vuex.Store({
         let json = res.data.data;
         for (let i = 0; i < json.length; i++) {
           products.push(json[i].attributes);
-          products[i].id = json[i].id
+          products[i].id = json[i].id;
         }
         commit("storeProducts", products);
       });
     },
+    addToCart({ commit, state }, product) {
+      commit("saveCart", product);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+    setCart({commit}) {
+      const cart = localStorage.getItem('cart')
+      if (!cart) {
+        return []
+      }
+      commit('setCart', JSON.parse(cart))
+    }
   },
   getters: {
     products(state) {
@@ -33,25 +51,43 @@ export default new Vuex.Store({
     sortProducts: state => (sortBy, limit) => {
       let sortedArray = [...state.products];
       sortedArray.sort((a, b) => b[sortBy] - a[sortBy]);
-      return sortedArray.slice(0, limit)
+      return sortedArray.slice(0, limit);
     },
     getCategories(state) {
-      let categories = []
+      let categories = [];
       for (let i = 0; i < state.products.length; i++) {
         if (!categories.includes(state.products[i].category)) {
           categories.push(state.products[i].category);
         }
       }
-      return categories
+      return categories;
     },
     sortByCategory: state => sortBy => {
-      let products = []
+      let products = [];
       for (let i = 0; i < state.products.length; i++) {
         if (state.products[i].category == sortBy) {
-          products.push(state.products[i])
+          products.push(state.products[i]);
         }
       }
-      return products
+      return products;
+    },
+    getProductById: state => productId => {
+      for (let i = 0; i < state.products.length; i++) {
+        if (state.products[i].id === Number(productId)) {
+          return state.products[i];
+        }
+      }
+    },
+    getCart(state) {
+      let cart = []
+      for (let i = 0; i < state.products.length; i++) {
+        for (let j = 0; j < state.cart.length; j++) {
+          if (state.products[i].id === state.cart[j]) {
+            cart.push(state.products[i])
+          }
+        }
+      }
+      return cart
     }
   }
 });
