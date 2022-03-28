@@ -21,15 +21,15 @@
         </router-link>
       </padding-container>
     </div>
-    <product-container-shop
-      heading="All Products"
+    <product-container 
       :products="products"
-    ></product-container-shop>
+      hasFilter="true">
+    </product-container>
   </div>
 </template>
-<script>
-import ProductContainerShop from "../components/ProductContainerShop.vue";
 
+
+<script>
 export default {
   data() {
     return {
@@ -56,10 +56,7 @@ export default {
     },
     categories() {
       return this.$store.getters.getCategories;
-    }
-  },
-  components: {
-    ProductContainerShop
+    },
   },
   mounted() {
     this.$store.dispatch("setProducts");
@@ -70,7 +67,7 @@ export default {
     } else {
       this.chosenCategory = this.$route.params.category;
     }
-  }
+  },
 };
 </script>
 

@@ -7,27 +7,29 @@
       imgVisible="true"
       arrowVisible="true"
     ></banner-top>
-    <product-container-home
-      heading="Most Popular"
+    <product-container
       :products="sortByPopular"
-    ></product-container-home>
-    <banner-5050></banner-5050>
-    <product-container-home
-      heading="Newest in Store"
+      heading="Most Popular"
+
+    >
+    </product-container>
+    <banner-5050>
+    </banner-5050>
+    <product-container
       :products="sortByPublished"
-    ></product-container-home>
+      heading="New in Store"
+    >
+    </product-container>
   </div>
 </template>
 
 <script>
-import ProductContainerHome from "../components/ProductContainerHome.vue";
 import Banner5050 from "../components/Banner5050.vue";
 
 export default {
   name: "Home",
   components: {
     Banner5050,
-    ProductContainerHome
   },
   computed: {
     sortByPopular() {

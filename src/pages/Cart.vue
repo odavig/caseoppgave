@@ -5,23 +5,39 @@
         <h1>My Cart</h1>
         <hr />
         <p v-if="getCart.length === 0">No Items in Cart :-(</p>
-        <div v-for="cartItem in getCart" :key="cartItem.id" class="rutenett productCard">
+        <div
+          v-for="cartItem in getCart"
+          :key="cartItem.id"
+          class="rutenett productCard"
+        >
           <img
             :src="'http://localhost:1337' + cartItem.img.data.attributes.url"
             alt=""
+            class="productImg"
           />
           <div class="cartProductText">
             <h3>
               {{ cartItem.title }}
-              <br>
+              <br />
               <b> ${{ cartItem.price }} </b>
             </h3>
+            <app-button
+              class="secondary img"
+            >
+              <img src="../assets/media/heart-outline.png" alt="">
+            </app-button>
           </div>
         </div>
       </div>
-      <div id="cartSummary">
+      <div id="cartSummary" v-if="getCart != 0">
         <h1>Summary</h1>
         <hr />
+        <div>
+          <h2>Sub-Total:</h2>
+          <h2>Delivery:</h2>
+          <br>
+          <h2>Total:</h2>
+        </div>
       </div>
     </padding-container>
   </div>
@@ -70,7 +86,7 @@ hr {
   margin-top: 7%;
 }
 
-#myCart img {
+.productImg {
   grid-column: 1/4;
   width: 100%;
   background-color: white;
@@ -83,5 +99,9 @@ hr {
 
 #cartSummary {
   grid-column: 9/13;
+}
+
+img {
+  vertical-align: -20%;
 }
 </style>

@@ -11,6 +11,8 @@ import ArrowIcon from './components/ArrowIcon.vue'
 import ProductCard from './components/ProductCard.vue'
 import Footer from './components/Footer.vue'
 import BannerTop from './components/BannerTop.vue'
+import ProductContainer from './components/ProductContainer.vue'
+import Input from './components/Input.vue'
 
 Vue.use(VueRouter)
 
@@ -20,6 +22,8 @@ Vue.component('arrow-icon', ArrowIcon)
 Vue.component('product-card', ProductCard)
 Vue.component('app-footer', Footer)
 Vue.component('banner-top', BannerTop)
+Vue.component('product-container', ProductContainer)
+Vue.component('app-input', Input)
 
 const router = new VueRouter({
   mode: 'history',

@@ -20,12 +20,12 @@
       </nav>
       <div id="navAction">
         <app-button 
-            btnClass="primary"
+            btnClass="primary small"
         >
         Sign Up
         </app-button>
         <app-button 
-            btnClass="secondary"
+            btnClass="secondary-border small"
         >
         Sign In
         </app-button>

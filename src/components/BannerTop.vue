@@ -11,7 +11,7 @@
         </div>
         <app-button
           v-if="btnVisible == 'true'"
-          btnClass="primary-white"
+          btnClass="secondary medium"
         >
         Buy Now
         </app-button>

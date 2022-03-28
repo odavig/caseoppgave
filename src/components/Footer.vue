@@ -1,14 +1,12 @@
 <template>
   <footer>
     <div id="emailSubContainer">
-      <input
-        type="text"
-        name=""
+      <app-input
         placeholder="Sign Up To Our Newsletter"
-        id=""
-      />
+        className="medium"
+      ></app-input>
       <app-button
-        btnClass="primary-white small"
+        btnClass="secondary small"
       >
       Sign Up
       </app-button>
@@ -64,14 +62,14 @@ footer {
   padding: 1%;
 }
 
-#emailSubContainer input {
+/* #emailSubContainer input {
   font-size: 14px;
   border: none;
   height: 1.5em;
   padding: 0.5%;
   width: 200px;
   border-radius: 5px;
-}
+} */
 
 #outerInformationContainer {
   background-color: #f1f1f1;

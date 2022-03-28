@@ -7,7 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     products: [],
-    cart: []
+    cart: [],
+    searchShop: '',
   },
   mutations: {
     storeProducts(state, products) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     setCart(state, cart) {
       state.cart = cart
+    },
+    setSearch(state, value) {
+      state.searchShop = value
     }
   },
   actions: {
@@ -34,14 +38,17 @@ export default new Vuex.Store({
     },
     addToCart({ commit, state }, product) {
       commit("saveCart", product);
-      localStorage.setItem("cart", JSON.stringify(state.cart));
+      sessionStorage.setItem("cart", JSON.stringify(state.cart));
     },
     setCart({commit}) {
-      const cart = localStorage.getItem('cart')
+      const cart = sessionStorage.getItem('cart')
       if (!cart) {
         return []
       }
       commit('setCart', JSON.parse(cart))
+    },
+    getSearch({ commit }, value) {
+      commit('setSearch', value)
     }
   },
   getters: {
@@ -88,6 +95,9 @@ export default new Vuex.Store({
         }
       }
       return cart
+    },
+    getSearchValue(state) {
+      return state.searchShop
     }
   }
 });

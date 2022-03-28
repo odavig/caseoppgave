@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'Button',
+  name: "Button",
   props: ["btnTitle", "btnClass"],
   data() {
     return {
@@ -24,38 +24,41 @@ button {
 .primary {
   background-color: #008066;
   color: white;
-  border: 3px solid #008066;
-  padding: 2% 4% 2% 4%;
-  border-radius: 12px;
-}
-
-.primary-white {
-  background-color: white;
-  color: #008066;
-  border: 3px solid #008066;
-  padding: 2% 4% 2% 4%;
-  border-radius: 12px;
-  font-size: 18px;
+  border: none;
+  border-radius: 10px;
 }
 
 .secondary {
   background-color: white;
   color: #008066;
-  border: 3px solid #008066;
-  padding: 2% 4% 2% 4%;
-  border-radius: 12px;
+  border: none;
+  border-radius: 10px;
 }
 
-.secondary-no-border {
+.secondary-border {
   background-color: white;
   color: #008066;
-  border: 3px solid white;
-  padding: 2% 4% 2% 4%;
-  border-radius: 12px;
+  border: 3px solid #008066; 
+  border-radius: 10px;
 }
 
 .small {
-  padding: 0.5% 1% 0.5% 1%;
-  font-size: 14px;
+  width: 80px;
+  height: 35px;
+}
+
+.medium {
+  width: 120px;
+  height: 50px;
+  font-size: 18px;
+}
+
+.img {
+  height: 50px;
+}
+
+.img img {
+  width: 100%;
+  height: 50%;
 }
 </style>
